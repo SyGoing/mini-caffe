@@ -1,4 +1,7 @@
-Mini-Caffe
+SyGoing's Mini-Caffe(Thanks to the luoyetx/mini-caffe)
+
+I have add my own depthwise convolution layer which is efficiency. In the future, I will add more necessary layers.
+
 ==========
 
 [![Build Status](https://travis-ci.org/luoyetx/mini-caffe.svg?branch=master)](https://travis-ci.org/luoyetx/mini-caffe)
@@ -12,7 +15,7 @@ Mini-Caffe only depends on OpenBLAS and protobuf which means you can't train mod
 
 ### Build on Windows
 
-You need a VC compiler to build Mini-Caffe. Visual Studio 2013 Community should be fine. You can download from [here](https://www.visualstudio.com/downloads/).
+You need a VC compiler to build Mini-Caffe. In fact,you can compile it with both Visual studio 2013 and Visual studio 2015.
 
 ##### OpenBLAS
 
@@ -27,6 +30,8 @@ $ git submodule update --init
 $ cd 3rdparty/src/protobuf/cmake
 $ mkdir build
 $ cd build
+$ cmake .. -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_MSVC_STATIC_RUNTIME=OFF -G "Visual Studio 14 2015 Win64"
+or
 $ cmake .. -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_MSVC_STATIC_RUNTIME=OFF -G "Visual Studio 12 2013 Win64"
 ```
 
@@ -40,6 +45,8 @@ $ generatepb.bat
 $ mkdir build
 $ cd build
 $ cmake .. -G "Visual Studio 12 2013 Win64"
+or
+$ cmake .. -G "Visual Studio 14 2015 Win64"
 ```
 
 Use `mini-caffe.sln` to compile it.
@@ -105,3 +112,6 @@ To use Mini-Caffe as a library, you may refer to [example](example).
 ### How to profile your network
 
 The Profiler in Mini-Caffe can help you profile your network performance, see docs [here](profile.md).
+
+### How to add new layer
+If you need to add a new layer for your model,just inherit the class of base_conv_layer or layer.Then you need to implement some neccessary function such as forward and the constructor
