@@ -56,6 +56,22 @@ inline int CAFFE_GET_BLOCKS(const int N) {
   return (N + CAFFE_CUDA_NUM_THREADS - 1) / CAFFE_CUDA_NUM_THREADS;
 }
 
+//CUDA: number of blocks for threads 
+//Date :2017.11.10
+//Author: Yang Shu
+//reference :darknet
+inline dim3 SCAFFE_GET_BLOCKS(const int N) {
+	int k = (N - 1) / CAFFE_CUDA_NUM_THREADS + 1;
+	int x = k;
+	int y = 1;
+	if (x > 65535){
+		x = ceil(sqrt(k));
+		y = (N - 1) / (x*CAFFE_CUDA_NUM_THREADS) + 1;
+	}
+	dim3 d(x,y,1);
+	return d;
+}
+
 }  // namespace caffe
 
 #endif  // USE_CUDA

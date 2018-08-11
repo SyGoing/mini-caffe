@@ -1,7 +1,7 @@
 # mini-caffe.cmake
 
-option(USE_CUDA "Use CUDA support" OFF)
-option(USE_CUDNN "Use CUDNN support" OFF)
+option(USE_CUDA "Use CUDA support" ON)
+option(USE_CUDNN "Use CUDNN support" ON)
 option(USE_JAVA "Use JAVA support" OFF)
 
 # select BLAS
