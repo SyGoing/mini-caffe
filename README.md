@@ -2,6 +2,8 @@ SyGoing's Mini-Caffe(Thanks to the luoyetx/mini-caffe)
 
 I have add my own depthwise convolution layer which is efficiency. In the future, I will add more necessary layers.
 
+If you want to add the implementation of depthwise convolution to the BLVC caffe,Please refer to my github:https://github.com/SyGoing/MobileNet-Caffe.git for detail
+
 ==========
 
 [![Build Status](https://travis-ci.org/luoyetx/mini-caffe.svg?branch=master)](https://travis-ci.org/luoyetx/mini-caffe)

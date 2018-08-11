@@ -42,5 +42,5 @@ namespace caffe {
 #ifndef USE_CUDA
 	STUB_GPU(DepthwiseConvLayer);
 #endif
-	REGISTER_LAYER_CLASS(ConvolutionDepthwise);
+	REGISTER_LAYER_CLASS(DepthwiseConv);
 }  // namespace caffe
