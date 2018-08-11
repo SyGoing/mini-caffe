@@ -38,7 +38,7 @@ namespace caffe {
 	*   be filtered. col2im restores the output spatial structure by rolling up
 	*   the output channel N' columns of the output matrix.
 	*/
-	class DepthwiseConvLayer : public BaseConvolutionLayer {
+	class DepthwiseConvolutionLayer : public BaseConvolutionLayer {
 	public:
 		/**
 		* @param param provides ConvolutionParameter convolution_param,
@@ -71,7 +71,7 @@ namespace caffe {
 		*  - engine: convolution has CAFFE (matrix multiplication) and CUDNN (library
 		*    kernels + stream parallelism) engines.
 		*/
-		explicit DepthwiseConvLayer(const LayerParameter& param)
+		explicit DepthwiseConvolutionLayer(const LayerParameter& param)
 			: BaseConvolutionLayer(param) {}
 
 		virtual inline const char* type() const { return "DepthwiseConvolution"; }

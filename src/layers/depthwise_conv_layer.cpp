@@ -6,7 +6,7 @@
 
 namespace caffe {
 
-	void DepthwiseConvLayer::compute_output_shape() {
+	void DepthwiseConvolutionLayer::compute_output_shape() {
 		const int* kernel_shape_data = this->kernel_shape_.cpu_data();
 		const int* stride_data = this->stride_.cpu_data();
 		const int* pad_data = this->pad_.cpu_data();
@@ -22,7 +22,7 @@ namespace caffe {
 		}
 	}
 
-	void DepthwiseConvLayer::Forward_cpu(const vector<Blob*>& bottom,
+	void DepthwiseConvolutionLayer::Forward_cpu(const vector<Blob*>& bottom,
 		const vector<Blob*>& top) {
 		const real_t* weight = this->blobs_[0]->cpu_data();
 		for (int i = 0; i < bottom.size(); ++i) {
@@ -40,7 +40,7 @@ namespace caffe {
 	}
 
 #ifndef USE_CUDA
-	STUB_GPU(DepthwiseConvLayer);
+	STUB_GPU(DepthwiseConvolutionLayer);
 #endif
-	REGISTER_LAYER_CLASS(DepthwiseConv);
+	REGISTER_LAYER_CLASS(DepthwiseConvolution);
 }  // namespace caffe

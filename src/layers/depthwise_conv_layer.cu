@@ -85,7 +85,7 @@ namespace caffe {
 
 	//2017.11.10 SyGoing Add
 	//overload the Forward_gpu For DepthwiseLayer
-	void DepthwiseConvLayer::Forward_gpu(
+	void DepthwiseConvolutionLayer::Forward_gpu(
 		const vector<Blob*>& bottom, const vector<Blob*>& top) {
 		const real_t* weight = this->blobs_[0]->gpu_data();
 
@@ -128,25 +128,6 @@ namespace caffe {
 					bottom_data, channels_, width_, height_, weight, kernel_h_, kernel_w_, stride,
 					pad, conved_width, conved_height, channels_,top_data, count, 0, bias_term_);
 			}
-
-			//2017.11.10 ×¢ÊÍ²»ÓÃ
-			/*stupid method 
-			   
-			*/
-			//for (int n = 0; n < this->num_; ++n) {
-			//	for (int c = 0; c < this->channels_; ++c){
-			//		const Dtype* const bottom_slice = bottom_data + (n *  this->channels_ + c) * bottom[i]->shape()[2] * bottom[i]->shape()[3];
-			//		const Dtype* const weight_slice = weight + c * kernel_shape_data[0] * kernel_shape_data[1];
-			//		Dtype*  top_slice = top_data + (n *  this->channels_ + c) * this->output_shape_[0] * this->output_shape_[1];
-			//		
-			//		//2017.11.08  
-			//		this->mforward_gpu_gemm(bottom_slice, weight_slice, top_slice);
-			//	}
-			//	if (this->bias_term_) {
-			//		const Dtype* bias = this->blobs_[1]->gpu_data();
-			//		this->mforward_gpu_bias(top_data + n * this->top_dim_, bias);
-			//	}
-			//}
 		}
 	}
 }  // namespace caffe
